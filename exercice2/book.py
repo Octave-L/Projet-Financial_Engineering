@@ -46,6 +46,7 @@ class Book:
         print(newBuy, end = "")
         print(" on ", self.name, end = "\n")
         
+        self.order()
         print(self)
 
 
@@ -61,9 +62,14 @@ class Book:
         print(newSell, end = "")
         print(" on ", self.name, end = "\n")
 
+        self.order()
         print(self)
 
 
+    def order(self):
+
+        temp = sorted(self.history, key = lambda order : order.price, reverse = False)
+        self.history = sorted(temp, key = lambda order : order.typeTransac, reverse = True)
 
 
     def __str__(self):
@@ -76,6 +82,10 @@ class Book:
         s += "-----------------------------"
 
         return s
+
+
+
+
 
 
 
