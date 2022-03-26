@@ -68,7 +68,7 @@ class Book:
 
     def order(self):
 
-        temp = sorted(self.history, key = lambda order : order.price, reverse = False)
+        temp = sorted(self.history, key = lambda order : order.price, reverse = True)
         self.history = sorted(temp, key = lambda order : order.typeTransac, reverse = True)
 
 
@@ -82,6 +82,8 @@ class Book:
         s += "-----------------------------"
 
         return s
+
+
 
 
 
