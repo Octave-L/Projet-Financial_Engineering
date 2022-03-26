@@ -71,7 +71,7 @@ class Book:
         s = "BOOK ON " + self.name + "\n"
 
         for transaction in self.history:
-            s += "\t" + transaction + "\n"
+            s += "\t" + str(transaction) + "\n"
             
         s += "-----------------------------"
 
