@@ -1,12 +1,15 @@
 #!/bin/bash
+
 FILE=.env
 if [ -d "$FILE" ]; then
-	echo "La machine virtuel $FILE existe"
+	echo "L'environnement virtuel $FILE existe"
 else
-	echo "Machine Virtuel non existante"
-	python3 -m venv .env
+	echo "L'environnement virtuel $FILE non existant! Création..."
+	python3 -m venv $FILE
+	echo "Environnement virtuel $FILE créé"
 fi
-PATH= $( readlink -f $FILE )
-source /home/octave/projet/.env/bin/activate
-echo $(pwd)
-python3 /home/octave/projet/exercice2/main.py
+
+source ./.env/bin/activate
+pip install -r requirements.txt
+python3 exercice2/main.py
+deactivate
