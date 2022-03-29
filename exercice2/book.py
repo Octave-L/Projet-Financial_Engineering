@@ -141,6 +141,19 @@ class Book:
 
             self.history.append(order)
 
+            
+    def visualisationPandas(self):
+
+        #dfSell = pandas.DataFrame({'quantity': pandas.Series([sells.quantity for sells in self.history if sells.typeTransac == "SELL"], index = [sells.id for sells in self.history if sells.typeTransac == "SELL"]), 'price': pandas.Series([sells.price for sells in self.history if sells.typeTransac == "SELL"], index = [sells.id for sells in self.history if sells.typeTransac == "SELL"])})
+        #dfBuy = pandas.DataFrame({'quantity': pandas.Series([buy.quantity for buy in self.history if buy.typeTransac == "BUY"], [buy.id for buy in self.history if buy.typeTransac == "BUY"]), 'price': pandas.Series([buy.price for buy in self.history if buy.typeTransac == "BUY"], index = [buy.id for buy in self.history if buy.typeTransac == "BUY"])})
+
+        #dfBook = pandas.DataFrame({dfBuy,dfSell})
+        
+        dfBook = pandas.DataFrame({'Type': pandas.Series([sells.typeTransac for sells in sorted(self.history, key=lambda x : x.id)], index = [sells.id for sells in sorted(self.history, key=lambda x : x.id)]), 'Quantity': pandas.Series([sells.quantity for sells in sorted(self.history, key=lambda x : x.id)], index = [sells.id for sells in sorted(self.history, key=lambda x : x.id)]), 'Price': pandas.Series([sells.price for sells in sorted(self.history, key=lambda x : x.id)], index = [sells.id for sells in sorted(self.history, key=lambda x : x.id)])})
+              
+        print(dfBook)
+
+
     
     # Overriding the str function so that we can easily print orders whenever we want
     def __str__(self):
